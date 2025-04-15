@@ -1,0 +1,6 @@
+@Missing_Middle_Student.API_HostAddress = http://localhost:5212
+
+GET {{Missing_Middle_Student.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
