@@ -86,7 +86,7 @@ namespace Missing_Middle_Student.Services.StaffService
             }
         }
 
-        public bool LoginAdmin(StaffDTO staff)
+        public bool LoginAdmin(LoginDTO staff)
         {
             var found_admin = _context.Admins.FirstOrDefault(a => a.Password == staff.Password && a.Email == staff.Email);
             if (found_admin != null)
@@ -99,7 +99,7 @@ namespace Missing_Middle_Student.Services.StaffService
             }
         }
 
-        public bool LoginTechnician(StaffDTO staff)
+        public bool LoginTechnician(LoginDTO staff)
         {
             var found_admin = _context.Technician.FirstOrDefault(a => a.Password == staff.Password && a.Email == staff.Email);
             if (found_admin != null)
@@ -120,7 +120,7 @@ namespace Missing_Middle_Student.Services.StaffService
                 {
                     Condition = dev.Condition,
                     Name = dev.Name,    
-                    Status = dev.Status,
+                    Status ="Unallocated",
                 
                 };
                 var res = _context.Add<Device>(device);

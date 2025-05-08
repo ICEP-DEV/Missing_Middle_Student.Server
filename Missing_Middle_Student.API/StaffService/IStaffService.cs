@@ -14,8 +14,8 @@ namespace Missing_Middle_Student.Services.StaffService
 {
     public interface IStaffService
     {
-        public bool LoginAdmin(StaffDTO staff);
-        public bool LoginTechnician(StaffDTO staff);
+        public bool LoginAdmin(LoginDTO staff);
+        public bool LoginTechnician(LoginDTO staff);
         public bool CreateTechnician(StaffDTO tech);
         public bool CreateAdmin(StaffDTO staff);
        // public bool ProveApplication(Applicant  applicant);

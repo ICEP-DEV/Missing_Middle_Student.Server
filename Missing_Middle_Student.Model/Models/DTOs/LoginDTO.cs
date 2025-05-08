@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Missing_Middle_Student.Model.Models.DTOs
 {
-    public class DeviceDTO
+    public class LoginDTO
     {
-     
-        public string Name { get; set; } = string.Empty;
-        public string Condition { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
     }
 }
