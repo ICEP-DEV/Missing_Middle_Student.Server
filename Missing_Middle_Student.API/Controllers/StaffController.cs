@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Missing_Middle_Student.Model.Models;
 using Missing_Middle_Student.Model.Models.DTOs;
 using Missing_Middle_Student.Services.StaffService;
 
@@ -51,21 +52,23 @@ namespace Missing_Middle_Student.API.Controllers
             }
             else
             {
-                return StatusCode(400);
+                return StatusCode(403);
             }
 
         }
         [HttpPost("/loginAdmin")]
         public IActionResult LoginAdmin(LoginDTO login)
         {
-            var res = _staffService.LoginAdmin(login);
-            if (res)
+            AdminResponse? res = _staffService.LoginAdmin(login);
+            if(res != null)
             {
-                return StatusCode(201);
+                var response = new Dictionary<string, AdminResponse?>();
+                response.Add("data", res);
+                return StatusCode(201 , response);
             }
             else
             {
-                return StatusCode(400);
+                return StatusCode(403);
             }
 
         }

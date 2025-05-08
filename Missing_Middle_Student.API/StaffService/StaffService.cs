@@ -86,16 +86,60 @@ namespace Missing_Middle_Student.Services.StaffService
             }
         }
 
-        public bool LoginAdmin(LoginDTO staff)
+        Dictionary<string,int> GetDevicesInfo()
+        {
+            var devices = _context.Devices.ToList();
+            var info = new Dictionary<string, int>();
+            if(devices != null)
+            {
+                info.Add("Total_devices", devices.Count);
+                var Unallocated_devices = devices.FindAll(a => a.Status == "Unallocated");
+                if(Unallocated_devices != null)
+                {
+                    info.Add("Unallocated_devices", Unallocated_devices.Count);
+                }
+                else
+                {
+                    info.Add("Unallocated_devices", 0);
+                }
+                var Allocated_devices = devices.FindAll(a => a.Status == "Allocated");
+                if (Allocated_devices != null)
+                {
+                    info.Add("Allocated_devices", Allocated_devices.Count);
+                }
+                else
+                {
+                    info.Add("Allocated_devices", 0);
+                }
+                return info;
+            }
+            else
+            {
+                info.Add("Total_devices",0);
+                info.Add("Unallocated_devices", 0);
+                info.Add("Allocated_devices",0);
+                return info;
+            }
+
+          
+        }
+
+        public AdminResponse? LoginAdmin(LoginDTO staff)
         {
             var found_admin = _context.Admins.FirstOrDefault(a => a.Password == staff.Password && a.Email == staff.Email);
             if (found_admin != null)
             {
-                return true;
+                AdminResponse res = new AdminResponse()
+                {
+                    Device_Info = this.GetDevicesInfo(),
+                    Applicants = "not available"
+                };
+
+                return res;
             }
             else
             {
-                return false;
+                return null;
             }
         }
 
@@ -119,7 +163,8 @@ namespace Missing_Middle_Student.Services.StaffService
                 var device = new Device()
                 {
                     Condition = dev.Condition,
-                    Name = dev.Name,    
+                    Brand = dev.Brand,
+                    Model = dev.Model,  
                     Status ="Unallocated",
                 
                 };

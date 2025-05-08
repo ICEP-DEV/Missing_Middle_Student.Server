@@ -8,8 +8,10 @@ namespace Missing_Middle_Student.Model.Models.DTOs
 {
     public class DeviceDTO
     {
-     
-        public string Name { get; set; } = string.Empty;
+
+        public string Brand { get; set; } = string.Empty;
+        public string Model { get; set; } = string.Empty;
+      
         public string Condition { get; set; } = string.Empty;
     }
 }
