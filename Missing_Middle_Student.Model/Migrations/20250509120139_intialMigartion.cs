@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Missing_Middle_Student.Model.Migrations
 {
     /// <inheritdoc />
-    public partial class initialMigration : Migration
+    public partial class intialMigartion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

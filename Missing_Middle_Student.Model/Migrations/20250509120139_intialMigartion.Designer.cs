@@ -12,8 +12,8 @@ using Missing_Middle_Student.Model.Models;
 namespace Missing_Middle_Student.Model.Migrations
 {
     [DbContext(typeof(ApplicantDbContext))]
-    [Migration("20250508071903_initialMigration")]
-    partial class initialMigration
+    [Migration("20250509120139_intialMigartion")]
+    partial class intialMigartion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

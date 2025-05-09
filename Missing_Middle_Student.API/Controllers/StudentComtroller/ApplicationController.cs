@@ -5,7 +5,7 @@ using Missing_Middle_Student.Services.Studentservices;
 
 namespace Missing_Middle_Student.API.Controllers.StudentComtroller
 {
-
+    
     [Route("api/[controller]")]
     public class ApplicationController : ControllerBase
     {
@@ -34,17 +34,17 @@ namespace Missing_Middle_Student.API.Controllers.StudentComtroller
                 applicant.SupportingDoc = memoryStream.ToArray(); // Assuming `AcademicRecord` is a byte[] property on Applicant
             }
 
-           await _appicantService.AddApplicantAsync(applicant);
+            await _appicantService.AddApplicantAsync(applicant);
 
 
-            return CreatedAtAction(nameof(GetApplicant), new { id = applicant.Id }, applicant)  ;
+            return CreatedAtAction(nameof(GetApplicant), new { id = applicant.Id }, applicant);
         }
 
 
         [HttpGet]
-        private object GetApplicant()
+        public async Task<ActionResult> GetApplicant(int id)
         {
-            var applicant = _appicantService.FindApplicationAsync;
+            var applicant = await _appicantService.FindApplicationAsync(id);
 
             if (applicant == null)
             {
@@ -53,5 +53,7 @@ namespace Missing_Middle_Student.API.Controllers.StudentComtroller
 
             return Ok(applicant);
         }
+
+
     }
 }
