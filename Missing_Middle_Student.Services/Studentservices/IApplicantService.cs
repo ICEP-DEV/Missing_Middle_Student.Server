@@ -10,5 +10,6 @@ namespace Missing_Middle_Student.Services.Studentservices
     public interface IApplicantService
     {
         Task AddApplicantAsync(Applicant applicant);
+        Task<Applicant> FindApplicationAsync(int id);
     }
 }

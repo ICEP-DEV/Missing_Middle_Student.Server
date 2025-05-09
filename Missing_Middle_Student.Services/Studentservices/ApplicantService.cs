@@ -22,5 +22,11 @@ namespace Missing_Middle_Student.Services.Studentservices
            _context.Applicants.Add(applicant);
             await _context.SaveChangesAsync();
         }
+         public async Task<Applicant>FindApplicationAsync(int id)
+        {
+            var applicant = await _context.Applicants.FindAsync(id);
+
+            return applicant;
+        }
     }
 }
